@@ -68,3 +68,116 @@ Acknowledgement
 
 The CodeIgniter team would like to thank EllisLab, all the
 contributors to the CodeIgniter project and you, the CodeIgniter user.
+```
+object(Checkout\Models\Payments\Payment)#23 (18) {
+  ["source"]=>
+  array(18) {
+    ["id"]=>
+    string(30) "src_2jjfnr672t4u3dmi4e243l476e"
+    ["type"]=>
+    string(4) "card"
+    ["expiry_month"]=>
+    int(12)
+    ["expiry_year"]=>
+    int(2023)
+    ["scheme"]=>
+    string(4) "Visa"
+    ["last4"]=>
+    string(4) "4242"
+    ["fingerprint"]=>
+    string(64) "C63152B5BEF7AC645FC14B4DF0F7A4CBC4A9AADFB7508C76BEF3BF560D5430D1"
+    ["bin"]=>
+    string(6) "424242"
+    ["card_type"]=>
+    string(6) "Credit"
+    ["card_category"]=>
+    string(8) "Consumer"
+    ["issuer"]=>
+    string(22) "JPMORGAN CHASE BANK NA"
+    ["issuer_country"]=>
+    string(2) "US"
+    ["product_id"]=>
+    string(1) "A"
+    ["product_type"]=>
+    string(16) "Visa Traditional"
+    ["avs_check"]=>
+    string(1) "S"
+    ["cvv_check"]=>
+    string(1) "Y"
+    ["payouts"]=>
+    bool(true)
+    ["fast_funds"]=>
+    string(1) "d"
+  }
+  ["currency"]=>
+  string(3) "GBP"
+  ["id"]=>
+  string(30) "pay_h6ehwo7pdtcu3ee2i5ufxoj3eq"
+  ["action_id"]=>
+  string(30) "act_h6ehwo7pdtcu3ee2i5ufxoj3eq"
+  ["amount"]=>
+  int(86000)
+  ["approved"]=>
+  bool(true)
+  ["status"]=>
+  string(10) "Authorized"
+  ["auth_code"]=>
+  string(6) "689539"
+  ["eci"]=>
+  string(2) "05"
+  ["scheme_id"]=>
+  string(15) "624740305910858"
+  ["response_code"]=>
+  string(5) "10000"
+  ["response_summary"]=>
+  string(8) "Approved"
+  ["risk"]=>
+  array(1) {
+    ["flagged"]=>
+    bool(false)
+  }
+  ["customer"]=>
+  array(3) {
+    ["id"]=>
+    string(30) "cus_rwiaedzd7hbedao76mdgtxhtou"
+    ["email"]=>
+    string(18) "liutao@liutao.work"
+    ["name"]=>
+    string(7) "Liu Tao"
+  }
+  ["processed_on"]=>
+  string(20) "2021-05-04T13:44:46Z"
+  ["processing"]=>
+  array(2) {
+    ["acquirer_transaction_id"]=>
+    string(10) "0079587608"
+    ["retrieval_reference_number"]=>
+    string(12) "045207873489"
+  }
+  ["_links"]=>
+  array(4) {
+    ["self"]=>
+    array(1) {
+      ["href"]=>
+      string(72) "https://api.sandbox.checkout.com/payments/pay_h6ehwo7pdtcu3ee2i5ufxoj3eq"
+    }
+    ["actions"]=>
+    array(1) {
+      ["href"]=>
+      string(80) "https://api.sandbox.checkout.com/payments/pay_h6ehwo7pdtcu3ee2i5ufxoj3eq/actions"
+    }
+    ["capture"]=>
+    array(1) {
+      ["href"]=>
+      string(81) "https://api.sandbox.checkout.com/payments/pay_h6ehwo7pdtcu3ee2i5ufxoj3eq/captures"
+    }
+    ["void"]=>
+    array(1) {
+      ["href"]=>
+      string(78) "https://api.sandbox.checkout.com/payments/pay_h6ehwo7pdtcu3ee2i5ufxoj3eq/voids"
+    }
+  }
+  ["http_code"]=>
+  int(201)
+}
+```
