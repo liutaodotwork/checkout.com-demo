@@ -29,11 +29,7 @@
         <div class="page-title">
             <div class="container">
                 <div class="column">
-                    <h1>Checkout</h1></div>
-                <div class="column">
-                    <ul class="breadcrumbs">
-                        <li><a href="/">Checkout</a></li>
-                    </ul>
+                    <h1>Checkout</h1>
                 </div>
             </div>
         </div>
@@ -111,9 +107,8 @@
                         </div>
                     </div>
                     <!-- Sidebar -->
-                    <div class="col-xl-4 col-lg-5">
+                    <div class="col-xl-4 col-lg-5 order-first order-md-last">
                         <aside class="sidebar">
-                            <div class="padding-top-2x hidden-lg-up"></div>
                             <!-- Order Summary Widget-->
                             <section class="widget widget-order-summary widget-featured-products">
                                 <h3 class="widget-title">Summary</h3>
@@ -179,13 +174,13 @@
                         backgroundColor: '#ffa000'
                     },
                     hover: {
-                        color: '#505050'
+                        color: '#05f'
                     },
                     focus: {
-                        color: "#505050"
+                        color: "#05f"
                     },
                     valid: {
-                        color: "#4caf50"
+                        color: "#05f"
                     },
                     invalid: {
                         color: "#f44336"
