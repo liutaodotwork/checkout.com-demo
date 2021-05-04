@@ -12,22 +12,44 @@ use Checkout\Models\Payments\Risk;
 
 class Welcome extends CI_Controller
 {
-	/**
-	 * Checkout Page.
-	 */
-	public function checkout()
-	{
-        $this->load->helper( 'url' );
+    /**
+     * Constructor
+     *
+     * @access public
+     */
+    public function __construct()
+    {
+        parent::__construct();
 
-        $vars[ 'asset_path' ] = '/assets';
-		$this->load->view( 'checkout', $vars );
-	}
+        $this->load->library( [
+            'user_agent'
+        ] );
 
-	/**
-	 * Do checkout.
-	 */
-	public function do_checkout()
-	{
+        $this->load->helper( [
+            'url'
+        ] );
+
+        $this->vars[ 'asset_path' ] = '/assets';
+        $this->vars[ 'is_mobile' ] = $this->agent->is_mobile();
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * Checkout Page.
+     */
+    public function checkout()
+    {
+        $this->load->view( 'checkout', $this->vars );
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * Do checkout.
+     */
+    public function do_checkout()
+    {
         if ( ! $this->input->is_ajax_request() )
         {
             show_error(404);
@@ -114,14 +136,18 @@ class Welcome extends CI_Controller
         return TRUE;
     }
 
-	/**
-	 * Do checkout.
-	 */
-	public function checkout_result()
-	{
+    // --------------------------------------------------------------------
+
+    /**
+     * Do checkout.
+     */
+    public function checkout_result()
+    {
         $vars[ 'asset_path' ] = '/assets';
-		$this->load->view( 'result', $vars );
+        $this->load->view( 'result', $this->vars );
     }
+
+    // --------------------------------------------------------------------
 
     /**
      * Json response
@@ -140,5 +166,5 @@ class Welcome extends CI_Controller
 
         echo json_encode( $json_arr );
     }
-    
+
 }
