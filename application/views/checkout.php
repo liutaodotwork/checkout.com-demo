@@ -302,9 +302,9 @@
                     },
                     ready: function( event )
                     {
-                        payButton.click( function( e )
+                        payButton.click( function()
                         {
-                            validateNameAndEmail( e );
+                            validateNameAndEmail();
                             $( this ).prop('disabled', true);
                             $( this ).html('<div class="spinner-border spinner-border-sm text-white mr-2" role="status"></div>Tokenizing...');
                             Frames.submitCard();
