@@ -5,7 +5,7 @@ This repo demonstrates a smooth and secure payment flow that the payment service
 
 
 * Youtube Video - [Smooth CKO Flow Video](https://www.youtube.com/watch?v=LvyTTd9nBj0)
-* Demo - [Just Demo](https://scf.liutao.work)
+* Demo - [Just Demo](https://scf.liutao.work)(Test Card Number: 4242424242424242, CVV: 100)
 * Test Cards - [Test Cards](https://docs.checkout.com/testing/test-card-numbers)
 
 <img src="https://raw.githubusercontent.com/liutaodotwork/smooth-cko-flow/master/webroot/assets/img/scf_desktop_1.jpeg" alt="drawing" width="800"/>
