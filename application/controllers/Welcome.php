@@ -103,10 +103,10 @@ class Welcome extends CI_Controller
         $method             = new TokenSource( $cko_token );
         $payment            = new Payment( $method, 'GBP' );
         $payment->amount    = $amount * 100;
-        $payment->reference = 'ORD-' . time();
+        $payment->reference = 'ord_' . time();
         $payment->threeDs   = new ThreeDs( TRUE );
         $payment->risk      = new Risk( TRUE );
-        $payment->setIdempotencyKey( 'ORD-' . time() );
+        $payment->setIdempotencyKey( 'ord_' . time() );
 
         // User details
         $name   = $this->input->post( 'name', TRUE );
@@ -154,6 +154,7 @@ class Welcome extends CI_Controller
             {
                 $details = $checkout->payments()->details( $cko_session_id );
 
+                $this->vars[ 'cko_source_id' ]  = $details->source[ 'id' ];
                 $this->vars[ 'order_number' ]   = $details->reference;
                 $this->vars[ 'name' ]           = $details->customer[ 'name' ];
                 $this->vars[ 'email' ]          = $details->customer[ 'email' ];

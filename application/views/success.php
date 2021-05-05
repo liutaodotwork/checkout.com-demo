@@ -39,9 +39,12 @@
                 <div class="card-body padding-top-2x">
                 <h2 class="card-title mb-4 text-success"><i class="icon-check-circle"></i> Thank You, <?= $name ?></h2>
                     <p class="card-text">Your order has been placed and will be processed as soon as possible.</p>
+                    <p>Your payment ID is <span class="text-medium text-primary"><?= $cko_source_id ?></span></p>
+
                     <p class="card-text">Make sure you make note of your order number, which is
                     <span class="text-medium text-primary"><?= $order_number ?></span></p>
-                    <p class="card-text">You will be receiving an email shortly with confirmation of your order.
+
+                    <p class="card-text">You will be receiving an email (<span class="text-medium text-primary"><?= $email ?></span>) shortly with confirmation of your order.
                     </p>
                     <div class="padding-top-1x padding-bottom-1x">
                         <a href="/" class="btn btn-primary"><i class="icon-shopping-cart"></i> Go Back Shopping</a>
