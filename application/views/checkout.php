@@ -71,7 +71,7 @@
                             <div class="card-body">
                                 <div class="text-center modal-spinner"><div class="spinner-border text-primary m-2" role="status"></div></div>
                                 <div class="cko-fields" style="display:none;">
-                                    <p>We accept following cards:&nbsp;&nbsp;<img class="d-inline-block align-middle" src="<?= $asset_path ?>/img/credit-cards.png" style="width: 120px;" alt="Cerdit Cards"></p>
+                                    <p>We accept following cards:&nbsp;&nbsp;<img class="d-inline-block align-middle" src="<?= $asset_path ?>/img/credit-cards.png" style="width: 135px;" alt="Cerdit Cards"></p>
                                     <p id="error-payment" class="text-primary mb-3"></p>
                                     <div class="row">
                                         <div class="form-group col-12">
@@ -313,7 +313,6 @@
                             });
 
                             $("#modal-3ds").modal('show');
-                            //window.location = $( '#redirect-url' ).val();
                         }
                     }
                 });

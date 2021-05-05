@@ -50,7 +50,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['checkout']['post'] = 'welcome/do_checkout';
-$route['checkout']['get']  = 'welcome/checkout_result';
+$route['success']['get']   = 'welcome/success';
+$route['failure']['get']   = 'welcome/failure';
+$route['three-ds-result/(:num)']['get']   = 'welcome/three_ds_result/$1';
 
 $route['default_controller'] = 'welcome/checkout';
 $route['404_override'] = '';

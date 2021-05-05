@@ -139,12 +139,37 @@ class Welcome extends CI_Controller
     // --------------------------------------------------------------------
 
     /**
-     * Do checkout.
+     * Success Result.
      */
-    public function checkout_result()
+    public function success()
     {
-        $vars[ 'asset_path' ] = '/assets';
-        $this->load->view( 'result', $this->vars );
+        $this->load->view( 'success', $this->vars );
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * Failure Result.
+     */
+    public function failure()
+    {
+        $this->load->view( 'failure', $this->vars );
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * 3DS Result.
+     */
+    public function three_ds_result( $res = 1 )
+    {
+        $res =  ! in_array( $res, [ 1, 0 ] ) ? 1 : $res;
+
+        $result_uri = ( $res == 1 ) ? 'success' : 'failure';
+
+        $this->vars[ 'result_page' ] = site_url( $result_uri );
+
+        $this->load->view( 'three_ds_result', $this->vars );
     }
 
     // --------------------------------------------------------------------
