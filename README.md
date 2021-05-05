@@ -1,14 +1,16 @@
 # Smooth CKO Flow
 
 
-This repo demonstrates a smooth and secure payment flow, in which the payment services are provided by checkout.com.
+This repo demonstrates a smooth and secure payment flow that the payment services are provided by [checkout.com](https://checkout.com).
 
+
+* Youtube Video - [Smooth CKO Flow Video](https://www.youtube.com/watch?v=LvyTTd9nBj0)
+* Demo - [Just Demo](https://scf.liutao.work)
+* Test Cards - [Test Cards](https://docs.checkout.com/testing/test-card-numbers)
 
 <img src="https://raw.githubusercontent.com/liutaodotwork/smooth-cko-flow/master/webroot/assets/img/scf_desktop_1.jpeg" alt="drawing" width="800"/>
 <img src="https://raw.githubusercontent.com/liutaodotwork/smooth-cko-flow/master/webroot/assets/img/scf_desktop_2.jpeg" alt="drawing" width="800"/>
 <img src="https://raw.githubusercontent.com/liutaodotwork/smooth-cko-flow/master/webroot/assets/img/scf_desktop_3.jpeg" alt="drawing" width="800"/>
-
-* Youtube Video - [Smooth CKO Flow](https://www.youtube.com/watch?v=LvyTTd9nBj0)
 
 ## Front-end source code files
 
