@@ -39,7 +39,8 @@
                 <div class="card-body padding-top-2x">
                     <h2 class="card-title mb-4 text-primary"><i class="icon-x-circle"></i> Sorry</h2>
                     <p class="card-text">Your payment failed, but you can try again with other cards within 5 minutes.</p>
-                    <p class="card-text">Your order number is <span class="text-medium">34VB5540K83</span></p>
+                    <p class="card-text">Your order number is
+                    <span class="text-medium text-primary"><?= $order_number ?></span></p>
                     <p class="card-text">We will keep this UNPAID order for 5 minutes.
                     </p>
                     <div class="padding-top-1x padding-bottom-1x">

@@ -31,6 +31,8 @@ class Welcome extends CI_Controller
 
         $this->vars[ 'asset_path' ] = '/assets';
         $this->vars[ 'is_mobile' ] = $this->agent->is_mobile();
+
+        $this->secret_key = 'sk_test_92d9ea33-3fe3-4b66-bdd8-3dee0b1f6b19';
     }
 
     // --------------------------------------------------------------------
@@ -91,8 +93,8 @@ class Welcome extends CI_Controller
             return FALSE;
         }
 
-        $secret_key         = 'sk_test_92d9ea33-3fe3-4b66-bdd8-3dee0b1f6b19';
-        $checkout           = new CheckoutApi( $secret_key );
+        
+        $checkout           = new CheckoutApi( $this->secret_key );
 
         // Payment details
         $cko_token  = $this->input->post( 'cko-token', TRUE );
@@ -143,6 +145,25 @@ class Welcome extends CI_Controller
      */
     public function success()
     {
+        $cko_session_id = $this->input->get( 'cko-session-id', TRUE );
+        if ( ! empty( $cko_session_id ) )
+        {
+            $checkout = new CheckoutApi( $this->secret_key );
+
+            try
+            {
+                $details = $checkout->payments()->details( $cko_session_id );
+
+                $this->vars[ 'order_number' ]   = $details->reference;
+                $this->vars[ 'name' ]           = $details->customer[ 'name' ];
+                $this->vars[ 'email' ]          = $details->customer[ 'email' ];
+            }
+            catch(CheckoutHttpException $ex)
+            {
+                return $ex->getErrors();
+            }
+        }
+
         $this->load->view( 'success', $this->vars );
     }
 
@@ -153,6 +174,25 @@ class Welcome extends CI_Controller
      */
     public function failure()
     {
+        $cko_session_id = $this->input->get( 'cko-session-id', TRUE );
+        if ( ! empty( $cko_session_id ) )
+        {
+            $checkout = new CheckoutApi( $this->secret_key );
+
+            try
+            {
+                $details = $checkout->payments()->details( $cko_session_id );
+
+                $this->vars[ 'order_number' ]   = $details->reference;
+                $this->vars[ 'name' ]           = $details->customer[ 'name' ];
+                $this->vars[ 'email' ]          = $details->customer[ 'email' ];
+            }
+            catch(CheckoutHttpException $ex)
+            {
+                return $ex->getErrors();
+            }
+        }
+
         $this->load->view( 'failure', $this->vars );
     }
 
@@ -166,6 +206,12 @@ class Welcome extends CI_Controller
         $res =  ! in_array( $res, [ 1, 0 ] ) ? 1 : $res;
 
         $result_uri = ( $res == 1 ) ? 'success' : 'failure';
+
+        $cko_session_id = $this->input->get( 'cko-session-id', TRUE );
+        if ( ! empty( $cko_session_id ) )
+        {
+            $result_uri .= '?cko-session-id=' . $cko_session_id;
+        }
 
         $this->vars[ 'result_page' ] = site_url( $result_uri );
 
