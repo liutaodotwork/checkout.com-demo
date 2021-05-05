@@ -19,6 +19,101 @@
         <link rel="stylesheet" media="screen" href="<?= $asset_path ?>/css/vendor.min.css">
         <!-- Main Template Styles-->
         <link id="mainStyles" rel="stylesheet" media="screen" href="<?= $asset_path ?>/css/styles.min.css">
+        <style type="text/css">
+            #payment-form iframe {
+                height: 46px !important
+            }
+
+            #payment-form .card-number-frame,#payment-form .expiry-date-frame,#payment-form .cvv-frame {
+                -webkit-box-flex: 1;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                padding-left: 37px
+            }
+
+            #payment-form .icon-container {
+                transition: color .3s;
+                background-color: transparent !important;
+                color: #999;
+                display: inline-block;
+                position: absolute;
+                top: 48%;
+                margin-top: 2px;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+                font-size: 1.1em;
+                left: 30px
+            }
+
+            #payment-form [id$="-error"] {
+                display: none
+            }
+
+            #payment-form .frame {
+                opacity: 0
+            }
+
+            #payment-form .frame--activated {
+                border: 1px solid #e0e0e0 !important;
+                border-radius: 5px !important;
+                background-color: #fff !important;
+                color: #505050 !important;
+                font-family: "Rubik",Helvetica,Arial,sans-serif !important;
+                font-size: 14px !important;
+                height: 46px !important
+            }
+
+            #payment-form .frame--activated.frame--focus {
+                border-color: #F03B2D !important;
+                outline: none !important;
+                background-color: rgba(240,59,45,0.02) !important;
+                color: #505050 !important;
+                box-shadow: none !important
+            }
+
+            #payment-form .frame--activated.frame--invalid {
+                border: solid 1px #d96830;
+                box-shadow: 0 2px 5px 0 rgba(217,104,48,0.15)
+            }
+
+            #payment-form .error-message {
+                display: block;
+                color: #c9501c;
+                font-size: 0.9rem;
+                margin: 8px 0 0 1px;
+                font-weight: 300
+            }
+
+            #payment-form .success-payment-message {
+                color: #13395e;
+                line-height: 1.4
+            }
+
+            #payment-form .token {
+                color: #b35e14;
+                font-size: 0.9rem;
+                font-family: monospace
+            }
+
+            #payment-form _:-ms-fullscreen,#payment-form :root .icon-container {
+                display: block
+            }
+
+            #payment-form _:-ms-fullscreen,#payment-form :root .icon-container img {
+                top: 50%;
+                -ms-transform: translateY(-50%);
+                position: absolute
+            }
+
+            #payment-form _:-ms-fullscreen,#payment-form #icon-card-number,#payment-form _:-ms-fullscreen,#payment-form #icon-expiry-date,#payment-form _:-ms-fullscreen,#payment-form #icon-cvv {
+                left: 7px
+            }
+
+            #payment-form #checkout-frames-card-number::-ms-clear {
+                display: none
+            }
+        </style>
         <!-- Modernizr-->
         <script src="<?= $asset_path ?>/js/modernizr.min.js"></script>
     </head>
@@ -154,7 +249,6 @@
             </div>
         </div>
         <script src="<?= $asset_path ?>/js/vendor.min.js"></script>
-        <script src="<?= $asset_path ?>/js/scripts.min.js"></script>
         <script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
         <script>
             $( document ).ready( function()
@@ -208,9 +302,9 @@
                     },
                     ready: function( event )
                     {
-                        payButton.click( function()
+                        payButton.click( function( e )
                         {
-                            validateNameAndEmail();
+                            validateNameAndEmail( e );
                             $( this ).prop('disabled', true);
                             $( this ).html('<div class="spinner-border spinner-border-sm text-white mr-2" role="status"></div>Tokenizing...');
                             Frames.submitCard();
