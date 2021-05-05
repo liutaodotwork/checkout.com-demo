@@ -210,6 +210,7 @@
                     {
                         payButton.click( function()
                         {
+                            validateNameAndEmail();
                             $( this ).prop('disabled', true);
                             $( this ).html('<div class="spinner-border spinner-border-sm text-white mr-2" role="status"></div>Tokenizing...');
                             Frames.submitCard();
@@ -285,7 +286,7 @@
                             if ( data.msg.name != undefined && data.msg.name.length > 0 )
                             {
                                 var formName = $( '#name' );
-                                $('#error-user').html('').html(data.msg.name);
+                                $('#error-user').html(data.msg.name);
                                 formName.focus();
                             }
 
@@ -307,16 +308,54 @@
                         }
                         else if (data.result=='1')
                         {
-                            $('#modal-3ds').on('shown.bs.modal',function()
+                            var modal = $('#modal-3ds');
+                            $( modal ).on('shown.bs.modal',function()
                             {
-                                $('#modal-3ds').find('iframe').attr('src',data.redirection)
+                                $( modal ).find('iframe').attr('src',data.redirection)
                             });
 
-                            $("#modal-3ds").modal('show');
+                            $(modal).modal('show');
                         }
                     }
                 });
             }
+
+            function validateNameAndEmail( event )
+            {
+                var isValid     = false;
+                var name        = $( '#name' );
+                var email       = $( '#email' );
+                var nameVal     = $( name ).val().trim();
+                var emailVal    = $( email ).val().trim();
+                var re = /\S+@\S+\.\S+/;
+
+                if ( nameVal.length == 0 )
+                {
+                    $('#error-user').html('The Name field is required.');
+                    name.focus();
+                }
+                else if ( emailVal.length == 0 )
+                {
+                    $('#error-user').html('The Email field is required.');
+                    email.focus();
+                }
+                else if ( ! re.test( emailVal ) )
+                {
+                    $('#error-user').html('The Email field must contain a valid email address.');
+                    email.focus();
+                }
+                else
+                {
+                    $('#error-user').html('');
+                    isValid = true;
+                }
+
+                if ( ! isValid )
+                {
+                    event.preventDefault();
+                }
+            }
+            
         </script>
     </body>
 </html>
